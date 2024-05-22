@@ -1,0 +1,31 @@
+name: Build templates
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1.176.0
+      - name: Install dependencies
+        run: |
+          gem install mustache
+      - name: Build templates
+        run: |
+          mustache android.yml template.html > android.html
+          mustache desktop.yml template.html > desktop.html
+      - name: Upload Android artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Android Template
+          path: android.html
+      - name: Upload Desktop artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Desktop Template
+          path: desktop.html
