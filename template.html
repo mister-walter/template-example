@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h1>A list!</h1>
+    <ul>
+        <li>This is relevant for all devices.</li>
+        {{#desktop}}
+        <li>This is only relevant for desktop devices.</li>
+        {{/desktop}}
+        {{#android}}
+        <li>This is only relevant for Android devices.</li>
+        {{/android}}
+    </ul>
+</body>
+</html>
